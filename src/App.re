@@ -141,7 +141,7 @@ let make = _children => {
             )
             removeExercise=(id => send(RemoveExercise(id)))
           />
-        | CreateWorkout => <BuildWorkout />
+        | CreateWorkout => <BuildWorkout exercises=state.exercises />
         }
       )
     </div>,

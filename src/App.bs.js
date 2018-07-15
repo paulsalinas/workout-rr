@@ -67,7 +67,7 @@ function make() {
                                               onClick: (function (param) {
                                                   return routerPush("createworkout", param);
                                                 })
-                                            }, "Build Workout"))))), match ? ReasonReact.element(undefined, undefined, BuildWorkout$ReactTemplate.make(/* array */[])) : ReasonReact.element(undefined, undefined, CreateExercises$ReactTemplate.make(state[/* exercises */1], state[/* muscles */3], (function (name, muscleId) {
+                                            }, "Build Workout"))))), match ? ReasonReact.element(undefined, undefined, BuildWorkout$ReactTemplate.make(state[/* exercises */1], /* array */[])) : ReasonReact.element(undefined, undefined, CreateExercises$ReactTemplate.make(state[/* exercises */1], state[/* muscles */3], (function (name, muscleId) {
                                       return Curry._1(send, /* AddExercise */Block.__(0, [
                                                     name,
                                                     muscleId
