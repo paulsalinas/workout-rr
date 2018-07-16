@@ -5,7 +5,7 @@ open Workout;
    for each  set */
 
 type state = {
-  reps: LiftingSet.reps,
+  reps: int,
   setRest: rest,
   setsCount: int,
   selectedExercise: option(int),
@@ -17,14 +17,29 @@ type action =
   | UpdateReps(string)
   | UpdateResistance(string);
 
+let create = (state: state) =>
+  SimpleSet({
+    reps: state.reps,
+    resistance: state.resistance,
+    setCount: state.setsCount,
+    exercise: {
+      id: 0,
+      name: "test",
+      muscle: {
+        id: 0,
+        name: "test",
+      },
+    },
+    tempo: {
+      concentric: 0,
+      eccentric: 0,
+      peak: 0,
+      bottom: 0,
+    },
+  });
 let component = ReasonReact.reducerComponent("BuildSimpleSetGrouping");
 
-let make =
-    (
-      ~exercises,
-      ~addSetGrouping: list(SetGrouping.groupings) => unit,
-      _children,
-    ) => {
+let make = (~exercises, ~addSetGrouping: setActivity => unit, _children) => {
   ...component,
   reducer: (action: action, state: state) =>
     switch (action) {

@@ -5,7 +5,7 @@ type state = {
   id: option(int),
   name: string,
   workoutActivities: list(workoutActivity),
-  reps: LiftingSet.reps,
+  reps,
   setRest: rest,
   setsCount: int,
   selectedExercise: option(exercise),
@@ -34,13 +34,13 @@ let renderWorkoutActivities = (workoutActivities: list(workoutActivity)) =>
                   )
                 </div>
               | Grouping(g) =>
-                <div>
-                  (
-                    ReasonReact.string(
-                      "Reps" ++ string_of_int(SetGrouping.liftingSetCount(g)),
-                    )
-                  )
-                </div>
+                <div
+                  /* (
+                       ReasonReact.string(
+                         "Reps" ++ string_of_int(SetGrouping.Count(g)),
+                       )
+                     ) */
+                />
               }
             )
           </div>
@@ -75,7 +75,9 @@ let make = (~exercises, _children) => {
         <div className="col">
           <ul className="list-group mb-2 mr-sm-2 ml-sm-2" />
         </div>
-        <div className="col"> <BuildSimpleSetGrouping exercises /> </div>
+        <div className="col">
+          <BuildSimpleSetGrouping exercises addSetGrouping=(_ => ()) />
+        </div>
       </div>
     </div>,
 };

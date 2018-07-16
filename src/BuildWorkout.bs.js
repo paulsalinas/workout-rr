@@ -5,7 +5,6 @@ var List = require("bs-platform/lib/js/list.js");
 var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Workout$ReactTemplate = require("./Workout.bs.js");
 var BuildSimpleSetGrouping$ReactTemplate = require("./BuildSimpleSetGrouping.bs.js");
 
 function renderWorkoutActivities(workoutActivities) {
@@ -13,7 +12,7 @@ function renderWorkoutActivities(workoutActivities) {
                     var tmp;
                     tmp = w.tag ? React.createElement("div", {
                             className: "col-4"
-                          }, "Muscle: " + String(w[0])) : React.createElement("div", undefined, "Reps" + String(Workout$ReactTemplate.SetGrouping[/* liftingSetCount */0](w[0])));
+                          }, "Muscle: " + String(w[0])) : React.createElement("div", undefined);
                     return React.createElement("li", {
                                 className: "list-group-item"
                               }, React.createElement("div", {
@@ -48,7 +47,9 @@ function make(exercises, _) {
                                       className: "list-group mb-2 mr-sm-2 ml-sm-2"
                                     })), React.createElement("div", {
                                   className: "col"
-                                }, ReasonReact.element(undefined, undefined, BuildSimpleSetGrouping$ReactTemplate.make(exercises, /* array */[])))));
+                                }, ReasonReact.element(undefined, undefined, BuildSimpleSetGrouping$ReactTemplate.make(exercises, (function () {
+                                            return /* () */0;
+                                          }), /* array */[])))));
             }),
           /* initialState */(function () {
               return /* record */[

@@ -1,42 +1,31 @@
 open Exercise;
 
 type rest = int;
+type reps = int;
+type tempo = {
+  concentric: int,
+  eccentric: int,
+  peak: int,
+  bottom: int,
+};
 
-module LiftingSet = {
-  type reps = int;
-  type tempo = {
-    concentric: int,
-    eccentric: int,
-    peak: int,
-    bottom: int,
-  };
-  type set = {
+module WorkoutSets = {
+  type simpleSet = {
     reps,
     exercise,
     tempo,
     resistance: float,
+    setCount: int,
   };
-  type workoutSet =
-    | Simple(set)
-    | Super(list(set));
 };
 
-module SetGrouping = {
-  type setActivity =
-    | Lift(LiftingSet.workoutSet)
-    | Rest(rest);
-  type groupings = list(setActivity);
-  let liftingSetCount = (groupings: groupings) =>
-    Belt.List.reduce(groupings, 0, (sum, g) =>
-      switch (g) {
-      | Lift(_) => sum + 1
-      | _ => sum
-      }
-    );
-};
+type setActivity =
+  | SimpleSet(WorkoutSets.simpleSet);
+
+type groupings = list(setActivity);
 
 type workoutActivity =
-  | Grouping(SetGrouping.groupings)
+  | Grouping(groupings)
   | Rest(rest);
 
 type workout = {

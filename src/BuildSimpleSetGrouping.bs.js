@@ -10,6 +10,28 @@ var Pervasives = require("bs-platform/lib/js/pervasives.js");
 var Caml_format = require("bs-platform/lib/js/caml_format.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 
+function create(state) {
+  return /* SimpleSet */[/* record */[
+            /* reps */state[/* reps */0],
+            /* exercise : record */[
+              /* id */0,
+              /* name */"test",
+              /* muscle : record */[
+                /* id */0,
+                /* name */"test"
+              ]
+            ],
+            /* tempo : record */[
+              /* concentric */0,
+              /* eccentric */0,
+              /* peak */0,
+              /* bottom */0
+            ],
+            /* resistance */state[/* resistance */4],
+            /* setCount */state[/* setsCount */2]
+          ]];
+}
+
 var component = ReasonReact.reducerComponent("BuildSimpleSetGrouping");
 
 function make(exercises, _, _$1) {
@@ -105,6 +127,7 @@ function make(exercises, _, _$1) {
         ];
 }
 
+exports.create = create;
 exports.component = component;
 exports.make = make;
 /* component Not a pure module */
