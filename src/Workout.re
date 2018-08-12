@@ -22,10 +22,8 @@ module WorkoutSets = {
 type setActivity =
   | SimpleSet(WorkoutSets.simpleSet);
 
-type groupings = list(setActivity);
-
 type workoutActivity =
-  | Grouping(groupings)
+  | Grouping(list(setActivity))
   | Rest(rest);
 
 type workout = {

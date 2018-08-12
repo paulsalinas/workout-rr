@@ -10,28 +10,6 @@ var Pervasives = require("bs-platform/lib/js/pervasives.js");
 var Caml_format = require("bs-platform/lib/js/caml_format.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 
-function create(state) {
-  return /* SimpleSet */[/* record */[
-            /* reps */state[/* reps */0],
-            /* exercise : record */[
-              /* id */0,
-              /* name */"test",
-              /* muscle : record */[
-                /* id */0,
-                /* name */"test"
-              ]
-            ],
-            /* tempo : record */[
-              /* concentric */0,
-              /* eccentric */0,
-              /* peak */0,
-              /* bottom */0
-            ],
-            /* resistance */state[/* resistance */4],
-            /* setCount */state[/* setsCount */2]
-          ]];
-}
-
 var component = ReasonReact.reducerComponent("BuildSimpleSetGrouping");
 
 function make(exercises, _, _$1) {
@@ -65,20 +43,95 @@ function make(exercises, _, _$1) {
                             }, React.createElement("label", undefined, "Resistance"), React.createElement("input", {
                                   className: "form-control",
                                   id: "resistanceInput",
-                                  value: Pervasives.string_of_float(state[/* resistance */4])
+                                  value: Pervasives.string_of_float(state[/* resistance */4]),
+                                  onChange: (function (_event) {
+                                      return Curry._1(send, /* UpdateResistance */Block.__(3, [_event.target.value]));
+                                    })
                                 })), React.createElement("div", {
                               className: "form-group"
                             }, React.createElement("label", undefined, "Reps"), React.createElement("input", {
                                   className: "form-control",
                                   id: "repsInput",
-                                  value: String(state[/* reps */0])
+                                  value: String(state[/* reps */0]),
+                                  onChange: (function (_event) {
+                                      return Curry._1(send, /* UpdateReps */Block.__(2, [_event.target.value]));
+                                    })
                                 })), React.createElement("div", {
                               className: "form-group"
                             }, React.createElement("label", undefined, "Sets"), React.createElement("input", {
                                   className: "form-control",
                                   id: "setsInput",
-                                  value: String(state[/* setsCount */2])
-                                })), React.createElement("button", {
+                                  value: String(state[/* setsCount */2]),
+                                  onChange: (function (_event) {
+                                      return Curry._1(send, /* UpdateSetCount */Block.__(1, [_event.target.value]));
+                                    })
+                                })), React.createElement("div", {
+                              className: "form-group"
+                            }, React.createElement("label", undefined, "Tempo"), React.createElement("div", {
+                                  className: "row"
+                                }, React.createElement("div", undefined, React.createElement("input", {
+                                          className: "form-control",
+                                          id: "setsPeak",
+                                          type: "number",
+                                          value: String(state[/* tempo */5][/* peak */2]),
+                                          onChange: (function (_event) {
+                                              var init = state[/* tempo */5];
+                                              return Curry._1(send, /* UpdateTempo */Block.__(4, [/* record */[
+                                                              /* concentric */init[/* concentric */0],
+                                                              /* eccentric */init[/* eccentric */1],
+                                                              /* peak */Caml_format.caml_int_of_string(_event.target.value),
+                                                              /* bottom */init[/* bottom */3]
+                                                            ]]));
+                                            })
+                                        })), React.createElement("div", {
+                                      className: "col-4"
+                                    }, React.createElement("input", {
+                                          className: "form-control",
+                                          id: "setsConcentric",
+                                          type: "number",
+                                          value: String(state[/* setsCount */2]),
+                                          onChange: (function (_event) {
+                                              var init = state[/* tempo */5];
+                                              return Curry._1(send, /* UpdateTempo */Block.__(4, [/* record */[
+                                                              /* concentric */Caml_format.caml_int_of_string(_event.target.value),
+                                                              /* eccentric */init[/* eccentric */1],
+                                                              /* peak */init[/* peak */2],
+                                                              /* bottom */init[/* bottom */3]
+                                                            ]]));
+                                            })
+                                        })), React.createElement("div", {
+                                      className: "col-4"
+                                    }, React.createElement("input", {
+                                          className: "form-control",
+                                          id: "setsEccentric",
+                                          type: "number",
+                                          value: String(state[/* setsCount */2]),
+                                          onChange: (function (_event) {
+                                              var init = state[/* tempo */5];
+                                              return Curry._1(send, /* UpdateTempo */Block.__(4, [/* record */[
+                                                              /* concentric */init[/* concentric */0],
+                                                              /* eccentric */Caml_format.caml_int_of_string(_event.target.value),
+                                                              /* peak */init[/* peak */2],
+                                                              /* bottom */init[/* bottom */3]
+                                                            ]]));
+                                            })
+                                        })), React.createElement("div", {
+                                      className: "col-4"
+                                    }, React.createElement("input", {
+                                          className: "form-control",
+                                          id: "setsBottom",
+                                          type: "number",
+                                          value: String(state[/* setsCount */2]),
+                                          onChange: (function (_event) {
+                                              var init = state[/* tempo */5];
+                                              return Curry._1(send, /* UpdateTempo */Block.__(4, [/* record */[
+                                                              /* concentric */init[/* concentric */0],
+                                                              /* eccentric */init[/* eccentric */1],
+                                                              /* peak */init[/* peak */2],
+                                                              /* bottom */Caml_format.caml_int_of_string(_event.target.value)
+                                                            ]]));
+                                            })
+                                        })))), React.createElement("button", {
                               className: "btn btn-primary",
                               type: "button"
                             }, "Complete Set!"));
@@ -89,7 +142,13 @@ function make(exercises, _, _$1) {
                       /* setRest */40,
                       /* setsCount */4,
                       /* selectedExercise */undefined,
-                      /* resistance */0.0
+                      /* resistance */0.0,
+                      /* tempo : record */[
+                        /* concentric */0,
+                        /* eccentric */0,
+                        /* peak */0,
+                        /* bottom */0
+                      ]
                     ];
             }),
           /* retainedProps */component[/* retainedProps */11],
@@ -101,23 +160,44 @@ function make(exercises, _, _$1) {
                                 /* setRest */state[/* setRest */1],
                                 /* setsCount */state[/* setsCount */2],
                                 /* selectedExercise */action[0],
-                                /* resistance */state[/* resistance */4]
+                                /* resistance */state[/* resistance */4],
+                                /* tempo */state[/* tempo */5]
                               ]]);
                 case 1 : 
+                    return /* Update */Block.__(0, [/* record */[
+                                /* reps */state[/* reps */0],
+                                /* setRest */state[/* setRest */1],
+                                /* setsCount */Caml_format.caml_int_of_string(action[0]),
+                                /* selectedExercise */state[/* selectedExercise */3],
+                                /* resistance */state[/* resistance */4],
+                                /* tempo */state[/* tempo */5]
+                              ]]);
+                case 2 : 
                     return /* Update */Block.__(0, [/* record */[
                                 /* reps */Caml_format.caml_int_of_string(action[0]),
                                 /* setRest */state[/* setRest */1],
                                 /* setsCount */state[/* setsCount */2],
                                 /* selectedExercise */state[/* selectedExercise */3],
-                                /* resistance */state[/* resistance */4]
+                                /* resistance */state[/* resistance */4],
+                                /* tempo */state[/* tempo */5]
                               ]]);
-                case 2 : 
+                case 3 : 
                     return /* Update */Block.__(0, [/* record */[
                                 /* reps */state[/* reps */0],
                                 /* setRest */state[/* setRest */1],
                                 /* setsCount */state[/* setsCount */2],
                                 /* selectedExercise */state[/* selectedExercise */3],
-                                /* resistance */Caml_format.caml_float_of_string(action[0])
+                                /* resistance */Caml_format.caml_float_of_string(action[0]),
+                                /* tempo */state[/* tempo */5]
+                              ]]);
+                case 4 : 
+                    return /* Update */Block.__(0, [/* record */[
+                                /* reps */state[/* reps */0],
+                                /* setRest */state[/* setRest */1],
+                                /* setsCount */state[/* setsCount */2],
+                                /* selectedExercise */state[/* selectedExercise */3],
+                                /* resistance */state[/* resistance */4],
+                                /* tempo */action[0]
                               ]]);
                 
               }
@@ -127,7 +207,6 @@ function make(exercises, _, _$1) {
         ];
 }
 
-exports.create = create;
 exports.component = component;
 exports.make = make;
 /* component Not a pure module */
