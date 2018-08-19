@@ -47,9 +47,7 @@ function make(exercises, _) {
                                       className: "list-group mb-2 mr-sm-2 ml-sm-2"
                                     })), React.createElement("div", {
                                   className: "col"
-                                }, ReasonReact.element(undefined, undefined, BuildSimpleSetGrouping$ReactTemplate.make(exercises, (function () {
-                                            return /* () */0;
-                                          }), /* array */[])))));
+                                }, ReasonReact.element(undefined, undefined, BuildSimpleSetGrouping$ReactTemplate.make(exercises, /* array */[])))));
             }),
           /* initialState */(function () {
               return /* record */[

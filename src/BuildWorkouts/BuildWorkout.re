@@ -75,9 +75,7 @@ let make = (~exercises, _children) => {
         <div className="col">
           <ul className="list-group mb-2 mr-sm-2 ml-sm-2" />
         </div>
-        <div className="col">
-          <BuildSimpleSetGrouping exercises addSetGrouping=(_ => ()) />
-        </div>
+        <div className="col"> <BuildSimpleSetGrouping exercises /> </div>
       </div>
     </div>,
 };

@@ -19,7 +19,7 @@ type action =
 
 let component = ReasonReact.reducerComponent("BuildSimpleSetGrouping");
 
-let make = (~exercises, ~addSetGrouping: setActivity => unit, _children) => {
+let make = (~exercises, _children) => {
   ...component,
   reducer: (action: action, state: state) =>
     switch (action) {
@@ -218,7 +218,6 @@ let make = (~exercises, ~addSetGrouping: setActivity => unit, _children) => {
                     }),
                   )
               )
-              value=(string_of_int(state.setsCount))
             />
           </div>
         </div>

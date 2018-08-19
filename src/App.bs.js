@@ -6,7 +6,7 @@ var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var BuildWorkout$ReactTemplate = require("./BuildWorkout.bs.js");
+var BuildWorkout$ReactTemplate = require("./BuildWorkouts/BuildWorkout.bs.js");
 var CreateExercises$ReactTemplate = require("./CreateExercises.bs.js");
 
 function routerPush(path, $$event) {

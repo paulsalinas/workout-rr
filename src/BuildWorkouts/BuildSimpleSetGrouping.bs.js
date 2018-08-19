@@ -12,7 +12,7 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 
 var component = ReasonReact.reducerComponent("BuildSimpleSetGrouping");
 
-function make(exercises, _, _$1) {
+function make(exercises, _) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -89,7 +89,7 @@ function make(exercises, _, _$1) {
                                           className: "form-control",
                                           id: "setsConcentric",
                                           type: "number",
-                                          value: String(state[/* setsCount */2]),
+                                          value: String(state[/* tempo */5][/* concentric */0]),
                                           onChange: (function (_event) {
                                               var init = state[/* tempo */5];
                                               return Curry._1(send, /* UpdateTempo */Block.__(4, [/* record */[
@@ -105,7 +105,7 @@ function make(exercises, _, _$1) {
                                           className: "form-control",
                                           id: "setsEccentric",
                                           type: "number",
-                                          value: String(state[/* setsCount */2]),
+                                          value: String(state[/* tempo */5][/* eccentric */1]),
                                           onChange: (function (_event) {
                                               var init = state[/* tempo */5];
                                               return Curry._1(send, /* UpdateTempo */Block.__(4, [/* record */[
@@ -121,7 +121,7 @@ function make(exercises, _, _$1) {
                                           className: "form-control",
                                           id: "setsBottom",
                                           type: "number",
-                                          value: String(state[/* setsCount */2]),
+                                          value: String(state[/* tempo */5][/* bottom */3]),
                                           onChange: (function (_event) {
                                               var init = state[/* tempo */5];
                                               return Curry._1(send, /* UpdateTempo */Block.__(4, [/* record */[
